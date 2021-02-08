@@ -23,7 +23,17 @@ export default function createConfig(_, env): Configuration {
         },
         {
           test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
+          use: [
+            mode === "development"
+              ? "style-loader"
+              : MiniCssExtractPlugin.loader,
+            "css-loader",
+            "postcss-loader",
+          ],
+        },
+        {
+          test: /\.png$/,
+          use: "url-loader",
         },
       ],
     },
