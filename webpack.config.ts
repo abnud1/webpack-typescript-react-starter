@@ -1,10 +1,14 @@
 import * as path from "path";
 import { Configuration } from "webpack";
+import * as WebpackDevServer from "webpack-dev-server";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CompressionWebpackPlugin from "compression-webpack-plugin";
-export default function createConfig(_, env): Configuration {
+export default function createConfig(
+  _,
+  env
+): Configuration & { devServer?: WebpackDevServer.Configuration } {
   const { mode } = env;
   return {
     mode,
